@@ -37,7 +37,7 @@ def transcribe_audio(file_path):
 # Test the transcription function
 if __name__ == "__main__":
     # Example audio file (replace this with your actual file)
-    audio_file = "data/audio/audio4.mp3"  # Update the path as needed
+    audio_file = "data/audio/audio3.mp3"  # Update the path as needed
     
     print("Checking for the audio file...")
     transcript = transcribe_audio(audio_file)

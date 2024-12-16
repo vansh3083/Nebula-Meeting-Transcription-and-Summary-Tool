@@ -53,7 +53,7 @@ def export_to_word(summary, file_name):
 # Main function to integrate transcription, summarization, and exporting
 if __name__ == "__main__":
     # Example audio file (update the path as needed)
-    audio_file = "data/audio/audio4.mp3"  # Replace with actual file path
+    audio_file = "data/audio/audio3.mp3"  # Replace with actual file path
     
     print("Starting transcription process...")
     transcript = transcribe_audio(audio_file)  # Get transcript from whisper_model.py
@@ -63,18 +63,22 @@ if __name__ == "__main__":
         print(transcript)
         
         print("\nStarting summarization process...")
-        summary = summarize_text(transcript)  # Pass the transcript to summarizer
+        summaries = summarize_text(transcript)  # Pass the transcript to summarizer
         
-        if summary:
-            print("\nSummary:")
-            print(summary)
+        if summaries:
+            print("\nGenerated Summaries:")
             
-            # Define a file name based on the audio file name or any custom name
-            file_name = "meeting_summary"  # You can customize this
-            
-            # Export to PDF and Word
-            export_to_pdf(summary, file_name)
-            export_to_word(summary, file_name)
+            # Loop over each model and export its summary
+            for model_name, summary in summaries.items():
+                print(f"\nSummary for {model_name}:")
+                print(summary)
+                
+                # Create a unique file name using the audio file name and model name
+                file_name = f"{os.path.splitext(os.path.basename(audio_file))[0]}_{model_name.replace('/', '_')}"
+                
+                # Export to PDF and Word
+                export_to_pdf(summary, file_name)
+                export_to_word(summary, file_name)
         else:
             print("Summarization failed. Please check the error messages above.")
     else:
