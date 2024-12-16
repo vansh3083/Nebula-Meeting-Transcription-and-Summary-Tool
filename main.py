@@ -53,7 +53,7 @@ def export_to_word(summary, file_name):
 # Main function to integrate transcription, summarization, and exporting
 if __name__ == "__main__":
     # Example audio file (update the path as needed)
-    audio_file = "data/audio/audio1.mp3"  # Replace with actual file path
+    audio_file = "data/audio/audio4.mp3"  # Replace with actual file path
     
     print("Starting transcription process...")
     transcript = transcribe_audio(audio_file)  # Get transcript from whisper_model.py

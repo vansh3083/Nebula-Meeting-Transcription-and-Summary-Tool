@@ -32,7 +32,7 @@ def summarize_text(text, max_length=130, min_length=30):
 
     try:
         print("Loading summarization model...")
-        summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
+        summarizer = pipeline("summarization", model="facebook/bart-large-xsum")
         
         # Split text into chunks if it's too long
         text_chunks = split_text(text)
@@ -55,7 +55,7 @@ def summarize_text(text, max_length=130, min_length=30):
 # Main function to integrate transcription and summarization
 if __name__ == "__main__":
     # Example audio file (update the path as needed)
-    audio_file = "data/audio/audio1.mp3"  # Replace with actual file path
+    audio_file = "data/audio/audio4.mp3"  # Replace with actual file path
     
     print("Starting transcription process...")
     transcript = transcribe_audio(audio_file)  # Get transcript from whisper_model.py
