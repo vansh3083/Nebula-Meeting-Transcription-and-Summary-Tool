@@ -3,10 +3,10 @@ import whisper
 
 def transcribe_audio(file_path):
     """
-    Transcribes the given audio file using Whisper.
+    Transcribes the given audio or video file using Whisper.
 
     Args:
-        file_path (str): Path to the audio file.
+        file_path (str): Path to the audio or video file.
 
     Returns:
         str: Transcribed text, or None if an error occurs.
@@ -22,7 +22,7 @@ def transcribe_audio(file_path):
         model = whisper.load_model("base")
 
         print("Transcription has started...")
-        # Transcribe the audio file
+        # Transcribe the audio or video file (Whisper extracts audio from video files automatically)
         result = model.transcribe(file_path)
         
         print("Transcription completed successfully!")
@@ -36,11 +36,11 @@ def transcribe_audio(file_path):
 
 # Test the transcription function
 if __name__ == "__main__":
-    # Example audio file (replace this with your actual file)
-    audio_file = "data/audio/audio3.mp3"  # Update the path as needed
+    # Example video file (replace this with your actual file)
+    video_file = "data/video/video1.mp4"  # Update the path to your video file
     
-    print("Checking for the audio file...")
-    transcript = transcribe_audio(audio_file)
+    print("Checking for the video file...")
+    transcript = transcribe_audio(video_file)
     
     if transcript:
         print("\nTranscription Output:")

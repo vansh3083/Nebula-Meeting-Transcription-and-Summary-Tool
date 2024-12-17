@@ -66,7 +66,7 @@ def summarize_text(text, max_length=130, min_length=30):
 # Main function to integrate transcription and summarization
 if __name__ == "__main__":
     # Example audio file (update the path as needed)
-    audio_file = "data/audio/audio3.mp3"  # Replace with actual file path
+    audio_file = "data/video/video1.mp4"  # Replace with actual file path
     
     print("Starting transcription process...")
     transcript = transcribe_audio(audio_file)  # Get transcript from whisper_model.py
