@@ -7,27 +7,22 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph
 from docx import Document
 from docx.shared import Pt
 
-# Function to export summary to PDF with text wrapping
 def export_to_pdf(summary, keypoints, decisions, action_items, file_name):
     try:
         output_folder = "output"
-        os.makedirs(output_folder, exist_ok=True)  # Ensure the output folder exists
+        os.makedirs(output_folder, exist_ok=True) 
         pdf_path = os.path.join(output_folder, f"{file_name}.pdf")
         
-        # Create the PDF document with letter page size
         doc = SimpleDocTemplate(pdf_path, pagesize=letter)
 
         # Get default styles
         styles = getSampleStyleSheet()
         style_normal = styles['Normal']
-        
-        # Define custom bold style for headings
+  
         bold_style = ParagraphStyle(name='BoldHeading', fontName='Helvetica-Bold', fontSize=12)
         
-        # Prepare the text to be added to the PDF (wrap text as a paragraph)
         paragraphs = []
 
-        # Add summary, keypoints, decisions, and action items to the PDF
         paragraphs.append(Paragraph("Summary:", bold_style))
         paragraphs.append(Paragraph(summary, style_normal))
         
@@ -40,7 +35,6 @@ def export_to_pdf(summary, keypoints, decisions, action_items, file_name):
         paragraphs.append(Paragraph("\nAction Items:", bold_style))
         paragraphs.append(Paragraph(action_items, style_normal))
 
-        # Build the PDF document with paragraphs
         doc.build(paragraphs)
 
         print(f"Summary saved to PDF: {pdf_path}")
@@ -80,8 +74,8 @@ def export_to_word(summary, keypoints, decisions, action_items, file_name):
 
 # Main function to integrate transcription, summarization, and exporting
 if __name__ == "__main__":
-    # Example audio file (update the path as needed)
-    audio_file = "data/video/meeting2.mp4"  # Replace with actual file path
+    
+    audio_file = "data/audio/meeting2.mp3" 
     
     print("Starting transcription process...")
     transcript = transcribe_audio(audio_file)  # Get transcript from whisper_model.py
@@ -96,7 +90,6 @@ if __name__ == "__main__":
         if summaries:
             print("\nGenerated Summaries:")
             
-            # Loop over each model and export its summary, key points, decisions, and action items
             for model_name, result in summaries.items():
                 print(f"\nSummary for {model_name}:")
                 print(result["summary"])
@@ -107,7 +100,6 @@ if __name__ == "__main__":
                 print("\nAction Items:")
                 print(result["action_items"])
                 
-                # Create a unique file name using the audio file name and model name
                 file_name = f"{os.path.splitext(os.path.basename(audio_file))[0]}_{model_name.replace('/', '_')}"
                 
                 # Export to PDF and Word

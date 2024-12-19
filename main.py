@@ -6,7 +6,6 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import SimpleDocTemplate, Paragraph
 from docx import Document
 
-# Function to export summary to PDF
 def export_to_pdf(summary, file_name):
     try:
         output_folder = "output"
@@ -23,7 +22,6 @@ def export_to_pdf(summary, file_name):
         print(f"Error exporting to PDF: {e}")
 
 
-# Function to export summary to Word
 def export_to_word(summary, file_name):
     try:
         output_folder = "output"
@@ -45,10 +43,10 @@ if __name__ == "__main__":
     api_key = os.getenv("GROQ_API_KEY")
     if not api_key:
         print("Error: GROQ_API_KEY environment variable is not set.")
-        exit(1)  # Exit if the API key is not found
+        exit(1)
 
    
-    audio_file = "data/video/meeting2.mp4"  # Default value if none is provided
+    audio_file = "data/audio/meeting2.mp3"
 
     print("Starting transcription process...")
     transcript = transcribe_audio(audio_file)
