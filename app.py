@@ -9,7 +9,7 @@ from reportlab.lib.styles import getSampleStyleSheet
 import os
 
 # Initialize the Groq model
-def get_groq_chat_model(api_key, model_name="llama3-8b-8192"):
+def get_groq_chat_model(api_key, model_name="llama-3.3-70b-versatile"):
     try:
         chat_model = ChatGroq(
             groq_api_key=api_key,
